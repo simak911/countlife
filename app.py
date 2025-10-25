@@ -34,8 +34,9 @@ def editstring(text):
 def calculate(name, year):
     lines = readit()
     for line in lines:
-        n = line['name'] 
+        n = line['name']
         y = line['year']
+        print(year,y,name,n,editstring(name) == editstring(n), year == y, type(year), type(y))
         if (year == y and editstring(name) == editstring(n)):
             return line['result']
     return gethash(name, year)
@@ -49,12 +50,11 @@ def get_main_page():
 def get_calculation():
     try: 
         name = request.args.get('name')
-        year = request.args.get('year')
+        year = numberize(request.args.get('year'))
         age = calculate(name, year)
         return {'status': 'valid', 'age': age}
     except:
         return {'status': 'invalid'}
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
