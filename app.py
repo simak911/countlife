@@ -4,7 +4,14 @@ from waitress import serve
 import os
 import random
 import csv
+import hashlib
 
+def gethash(name, year):
+    input_str = f"{name}-{year}"
+    hash_bytes = hashlib.sha256(input_str.encode('utf-8')).digest()
+    hash_int = int.from_bytes(hash_bytes[:4], 'big')
+    result = 50 + (hash_int % 61)
+    return result
 
 def numberize(text):
     try:
@@ -31,7 +38,7 @@ def calculate(name, year):
         y = line['year']
         if (year == y and editstring(name) == editstring(n)):
             return line['result']
-    return random.randint(50,110)
+    return gethash(name, year)
 
 app = Flask(__name__)
 @app.route('/')
