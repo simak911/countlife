@@ -36,7 +36,6 @@ def calculate(name, year):
     for line in lines:
         n = line['name']
         y = line['year']
-        print(year,y,name,n,editstring(name) == editstring(n), year == y, type(year), type(y))
         if (year == y and editstring(name) == editstring(n)):
             return line['result']
     return gethash(name, year)
