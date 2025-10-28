@@ -51,10 +51,12 @@ def get_calculation():
         name = request.args.get('name')
         year = numberize(request.args.get('year'))
         age = calculate(name, year)
-        return {'status': 'valid', 'age': age}
+        age_string = f'Dožiješ se {age} let.'
+        return {'status': 'valid', 'age': age_string}
     except:
         return {'status': 'invalid'}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
-    serve(app, host="0.0.0.0", port=port)
+    app.run(debug=True, port=8080)
+    #port = int(os.environ.get("PORT", 8080))
+    #serve(app, host="0.0.0.0", port=port)

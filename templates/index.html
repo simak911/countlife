@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CountLife</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 <body>
-    <h2>CountLife</h2>
-    <input id="name" type="text" placeholder="Jméno a příjmení.">
-    <input id="year" type="number" step="1" placeholder="Rok narození.">
-    <button id="but">OK.</button>
-    <h3 id="show"></h3>
+    <div id="grey">
+    <div id="header">
+        <img id="obr_logo" src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="">
+        <h1>CountLife</h1>
+    </div>  
+    <div class = 'form_input_div_1'>
+        <label for="name">Jméno a příjmení:</label> <input name="name" id="name" class = "form_input" type="text">
+    </div>
+    <div class = 'form_input_div_2'>
+        <label for="year">Rok narození:</label>
+        <input name="year" id="year" type="number" step="1" class = "form_input">
+    </div>
+    <button id="but">
+        <img id="obr_but" src="{{ url_for('static', filename='imgs/tlacitko.jpg') }}" alt="KLIKNI">
+    </button>
+    <h2 id="show"></h2>
     <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+    </div>
 </body>
 </html>
